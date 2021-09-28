@@ -7,12 +7,8 @@
 </template>
 
 <script>
-import mycard from "@/components/mycard/mycard";
 import { mapActions } from "vuex";
 export default {
-  components: {
-    mycard,
-  },
   created() {
     this.$store.dispatch("initData");
   },
