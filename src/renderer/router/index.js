@@ -1,11 +1,28 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-// 引入路由表
-import routerMap from './constantRouterMap'
+
+const chat = () => import('@/page/chat/chat')
+const friend = () => import('@/page/friend/friend')
+const resume = () => import('@/page/resume/resume')
 
 Vue.use(Router)
 
-export default new Router({
-  scrollBehavior: () => ({ y: 0 }),
-  routes: routerMap
+const router = new Router({
+  routes: [
+    {
+      path: '/chat',
+      component: chat
+    },
+    {
+      path: '/friend',
+      component: friend
+    },
+    {
+      path: '/my',
+      component: resume
+    }
+  ],
+  linkActiveClass: 'active' //用 active 替换点击时添加的class
 })
+router.push({path: '/chat'});
+export default router

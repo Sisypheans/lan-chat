@@ -14,5 +14,7 @@ module.exports = {
   UseStartupChart: true,
   IsUseSysTitle: true,
   DllFolder: '',
-  BuiltInServerPort: 25565
+  BuiltInServerPort: 25565,
+  multicastIp: '224.0.0.2',
+  multicastPort: '8062'
 }

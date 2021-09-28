@@ -66,6 +66,7 @@
   },
   "dependencies": {
     "axios": "^0.21.4",
+    "bonjour": "^3.5.0",
     "date-fns": "^2.23.0",
     "electron-updater": "^4.3.9",
     "element-ui": "^2.15.6",
@@ -139,6 +140,8 @@
     "sass": "^1.40.0",
     "sass-loader": "^12.1.0",
     "style-loader": "^3.1.0",
+    "stylus": "^0.55.0",
+    "stylus-loader": "^6.1.0",
     "svg-sprite-loader": "^6.0.9",
     "url-loader": "^4.1.1",
     "vue-html-loader": "^1.2.4",

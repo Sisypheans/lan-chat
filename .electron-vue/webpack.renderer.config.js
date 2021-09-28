@@ -54,8 +54,8 @@ let rendererConfig = {
       },
       {
         test: /\.svg$/,
-        loader: 'svg-sprite-loader',
-        include: [resolve('src/renderer/icons')],
+        loader: 'url-loader',
+        include: [resolve('src/renderer/assets/fonts')],
         options: {
           symbolId: 'icon-[name]'
         }

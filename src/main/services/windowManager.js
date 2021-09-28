@@ -14,10 +14,10 @@ function createMainWindow () {
    * Initial window options
    */
   mainWindow = new BrowserWindow({
-    height: 800,
+    minHeight: 600,
     useContentSize: true,
-    width: 1700,
-    minWidth: 1366,
+    width: 1000,
+    minWidth: 1000,
     show: false,
     frame: config.IsUseSysTitle,
     titleBarStyle: 'hidden',
