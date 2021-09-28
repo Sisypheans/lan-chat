@@ -16,13 +16,24 @@ import search from '@/components/search/search'
 import chatlist from '@/components/chatlist/chatlist'
 import message from '@/components/message/message'
 import vText from '@/components/text/text'
+import { ipcRenderer,shell } from "electron";
 export default {
   components: {
     search,
     chatlist,
     message,
     vText
-  }
+  },
+  created() {
+    ipcRenderer.invoke("statr-server").then((res) => {
+        if (res) {
+          this.$message({
+            type: "success",
+            message: res,
+          });
+        }
+      });
+  },
 }
 </script>
 
