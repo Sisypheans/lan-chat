@@ -48,6 +48,8 @@ export default {
   created() {
     ipcRenderer.on("receive-msg", (event, arg) => {
       var msg = {
+        self: false,
+        img: 'static/images/mother.jpg',
         content: arg,
       };
       this.$store.dispatch("sendMessage", msg);
@@ -74,6 +76,7 @@ export default {
         }, 1000);
       } else {
         var msg = {
+          self: true,
           content: this.content,
         };
         this.$store.dispatch("sendMessage", msg);

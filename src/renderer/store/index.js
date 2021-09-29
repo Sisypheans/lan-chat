@@ -252,10 +252,11 @@ const mutations = {
   // 发送信息
   sendMessage(state, msg) {
     let result = state.chatlist.find(session => session.id === state.selectId);
+    console.log(msg.self)
     result.messages.push({
       content: msg.content,
       date: new Date(),
-      self: true
+      self: msg.self
     });
     if (result.user.name === '机器人') {
       setTimeout(() => {
