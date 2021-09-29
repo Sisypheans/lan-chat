@@ -49,13 +49,13 @@
       //  在发送信息之后，将输入的内容中属于表情的部分替换成emoji图片标签
       //  再经过v-html 渲染成真正的图片
       replaceFace(con) {
-        if (con.includes('/:')) {
-          var emojis = this.emojis;
-          for (var i = 0; i < emojis.length; i++) {
-            con = con.replace(emojis[i].reg, '<img src="static/emoji/' + emojis[i].file + '"  alt="" style="vertical-align: middle; width: 24px; height: 24px" />');
-          }
-          return con;
-        }
+        // if (con.includes('/:')) {
+        //   var emojis = this.emojis;
+        //   for (var i = 0; i < emojis.length; i++) {
+        //     con = con.replace(emojis[i].reg, '<img src="static/emoji/' + emojis[i].file + '"  alt="" style="vertical-align: middle; width: 24px; height: 24px" />');
+        //   }
+        //   return con;
+        // }
         return con;
       }
     },

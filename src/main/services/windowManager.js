@@ -33,6 +33,7 @@ function createMainWindow () {
       scrollBounce: process.platform === 'darwin'
     }
   })
+  global.wc = mainWindow
   // 这里设置只有开发环境才注入显示开发者模式
   if (process.env.NODE_ENV === 'development') {
     menuconfig.push({

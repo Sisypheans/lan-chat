@@ -61,13 +61,13 @@ export default {
         )
       }
     })
-    ipcMain.on('receive-msg', (event) => {
-      event.returnValue = Client.receiveMsg();
-    })
-    ipcMain.on('asynchronous-message', (event, arg) => {
-      console.log('asynchronous-message trigger')
-      event.sender.send('receive-msg', arg)
-    })
+    // ipcMain.on('receive-msg', (event) => {
+    //   event.returnValue = Client.receiveMsg();
+    // // })
+    // ipcMain.on('asynchronous-message', (event, arg) => {
+    //   console.log('asynchronous-message trigger')
+    //   event.sender.send('receive-msg', arg)
+    // })
     ipcMain.handle('stop-server', async (event, arg) => {
       try {
         const serveStatus = await Server.StopServer()

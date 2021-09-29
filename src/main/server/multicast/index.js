@@ -1,6 +1,7 @@
 import config from '@config'
 import IP from 'ip'
-const {ipcRenderer} = require('electron')
+// const {ipcMain} = require('electron')
+import window from '../../services/windowManager'
 
 const dgram = require('dgram');
 var client = dgram.createSocket('udp4');
@@ -32,16 +33,22 @@ client.on('message', (msg, rinfo) => {
     console.log('msg:' + JSON.stringify(msg));
     console.log('rinfo:' + JSON.stringify(rinfo));
 
-    // if (rinfo.address == IP.address()) {
-    //     console.log('its me')
-    //     return
-    // }
+    if (rinfo.address == IP.address()) {
+        console.log('its me')
+        return
+    }
 
     db.insert(JSON.parse(msg), function(err, doc) {
         console.log('insert:', doc)
     })
-    console.log(ipcRenderer)
-    ipcRenderer.send('asynchronous-message', msg)
+    
+    global.wc.send('receive-msg', JSON.parse(msg).msg);
+    // ipcMain.on('asynchronous-message', function(event, arg) {
+    //     console.log(arg)
+    //     // event.sender.send('asynchronous-message', JSON.parse(msg))
+    //     event.returnValue = msg;
+    // });
+    // console.log(ipcMain)
     // db.find({}).sort({ctime: -1, _id: 1}).limit(1).exec(function (err, docs) {
     //     var preId = docs[0].preId;
     // });
