@@ -16,3 +16,4 @@ package-lock.json
 electron-vue-template-ts.7z
 server/client/lan-chat Setup 0.0.1.exe
 build/builder-effective-config.yaml
+data.db
