@@ -1,6 +1,6 @@
 import { ipcMain, dialog, BrowserWindow } from 'electron'
 import Server from '../server/index'
-import Client from '../server/multicast/client'
+import Client from '../server/multicast'
 import { winURL } from '../config/StaticPath'
 
 export default {
@@ -60,6 +60,13 @@ export default {
           error
         )
       }
+    })
+    ipcMain.on('receive-msg', (event) => {
+      event.returnValue = Client.receiveMsg();
+    })
+    ipcMain.on('asynchronous-message', (event, arg) => {
+      console.log('asynchronous-message trigger')
+      event.sender.send('receive-msg', arg)
     })
     ipcMain.handle('stop-server', async (event, arg) => {
       try {

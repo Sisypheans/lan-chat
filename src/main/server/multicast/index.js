@@ -1,5 +1,6 @@
 import config from '@config'
 import IP from 'ip'
+import { ipcRenderer } from 'electron'
 
 const dgram = require('dgram');
 var client = dgram.createSocket('udp4');
@@ -39,7 +40,8 @@ client.on('message', (msg, rinfo) => {
     db.insert(JSON.parse(msg), function(err, doc) {
         console.log('insert:', doc)
     })
-
+    
+    ipcRenderer.send('asynchronous-message', msg)
     // db.find({}).sort({ctime: -1, _id: 1}).limit(1).exec(function (err, docs) {
     //     var preId = docs[0].preId;
     // });
@@ -50,7 +52,7 @@ client.on('message', (msg, rinfo) => {
     //         console.log('insert:', doc)
     //     })
     // }
-});
+})
 
 client.bind(config.multicastPort);  // 监听组播数据的端口
 
