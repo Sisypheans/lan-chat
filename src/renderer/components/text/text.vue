@@ -25,6 +25,7 @@
 
 <script>
 import { mapGetters, mapState } from 'vuex'
+import { ipcRenderer } from "electron";
 export default {
   data() {
     return {
@@ -78,6 +79,18 @@ export default {
             content: this.content,
           }
           this.$store.dispatch('sendMessage', msg)
+          
+
+          ipcRenderer.invoke("send-msg", this.content).then((res) => {
+            if (res) {
+              this.$message({
+                type: "success",
+                message: res,
+              });
+            }
+          });
+
+
           this.content = ''
         }
       }

@@ -1,5 +1,6 @@
 import { ipcMain, dialog, BrowserWindow } from 'electron'
 import Server from '../server/index'
+import Client from '../server/multicast/client'
 import { winURL } from '../config/StaticPath'
 
 export default {
@@ -43,6 +44,16 @@ export default {
         const serveStatus = await Server.StatrServer()
         console.log(serveStatus)
         return serveStatus
+      } catch (error) {
+        dialog.showErrorBox(
+          '错误',
+          error
+        )
+      }
+    })
+    ipcMain.handle('send-msg', (event, arg) => {
+      try {
+        Client.sendMsg(arg)
       } catch (error) {
         dialog.showErrorBox(
           '错误',
